@@ -1,9 +1,11 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously, avoid_print
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myshop/components/custom_navbar.dart';
 
 import 'package:myshop/enums.dart';
+import 'package:myshop/screens/sign_in/sign_in_screen.dart';
 
 import 'components/profile_menu.dart';
 import 'components/profile_pic.dart';
@@ -54,7 +56,20 @@ class ProfileScreen extends StatelessWidget {
             ProfileMenu(
               text: "Log Out",
               icon: "assets/icons/Log out.svg",
-              press: () {},
+              press: () async {
+                try {
+                  await FirebaseAuth.instance.signOut();
+                  // Navigate to the HomeScreen after successful log-out
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    SignInScreen.routeName,
+                    (route) => false, // Remove all existing routes
+                  );
+                } catch (e) {
+                  print("Error during log-out: $e");
+                  // Handle log-out error if needed
+                }
+              },
             ),
           ],
         ),

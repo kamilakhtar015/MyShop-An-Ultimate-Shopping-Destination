@@ -1,9 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:myshop/firebase_options.dart';
 import 'package:myshop/routes.dart';
 import 'package:myshop/screens/splash/splash_screen.dart';
 import 'package:myshop/theme.dart';
 
-void main() {
+Future<void> main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -17,7 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      initialRoute: SplashScreeen.routeName,
+      // home: const SplashScreeen(),
+      initialRoute: SplashScreen.routeName,
       routes: routes,
     );
   }

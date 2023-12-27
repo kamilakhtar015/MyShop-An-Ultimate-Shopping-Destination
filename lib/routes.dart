@@ -12,7 +12,7 @@ import 'package:myshop/screens/sign_up/sign_up_screen.dart';
 import 'package:myshop/screens/splash/splash_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
-  SplashScreeen.routeName: (context) => const SplashScreeen(),
+  SplashScreen.routeName: (context) => const SplashScreen(),
   SignInScreen.routeName: (context) => const SignInScreen(),
   ForgetPasswordScreen.routneName: (context) => const ForgetPasswordScreen(),
   LoginSuccessScreen.routeName: (context) => const LoginSuccessScreen(),

@@ -37,6 +37,7 @@ class Body extends StatelessWidget {
                 SizedBox(
                   height: screenHeight * 0.08,
                 ),
+                // Sign Up form
                 const SignForm(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

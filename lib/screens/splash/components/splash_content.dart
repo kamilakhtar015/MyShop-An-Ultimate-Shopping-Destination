@@ -16,33 +16,35 @@ class SplashContent extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Column(
-      children: [
-        Text(
-          "MyShop",
-          style: TextStyle(
-            fontSize: screenWidth * 0.08,
-            color: kPrimaryColor,
-            fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Text(
+            "MyShop",
+            style: TextStyle(
+              fontSize: screenWidth * 0.08,
+              color: kPrimaryColor,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        // const Spacer(),
-        const SizedBox(height: 20),
-        Text(
-          text,
-          textAlign: TextAlign.center,
-        ),
-        // const Spacer(
-        //   flex: 2,
-        // ),
-        const SizedBox(height: 30),
-        Image.asset(
-          image,
-          height: screenWidth * 0.5,
-          width: screenWidth * 0.4,
-        ),
-        const SizedBox(height: 30),
-      ],
+          // const Spacer(),
+          const SizedBox(height: 20),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+          ),
+          // const Spacer(
+          //   flex: 2,
+          // ),
+          const SizedBox(height: 30),
+          Image.asset(
+            image,
+            height: screenWidth * 0.5,
+            width: screenWidth * 0.4,
+          ),
+          const SizedBox(height: 30),
+        ],
+      ),
     );
   }
 }
