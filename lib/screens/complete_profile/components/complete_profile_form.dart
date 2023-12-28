@@ -90,10 +90,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               press: () async {
                 if (_formKey.currentState!.validate()) {
                   final user = UserModel(
-                      firstName: firstNameController.text.trim(),
-                      lastName: lastNameController.text.trim(),
-                      phoneNumber: phoneNumberController.text.trim(),
-                      address: addressController.text.trim());
+                    firstName: firstNameController.text.trim(),
+                    lastName: lastNameController.text.trim(),
+                    phoneNumber: phoneNumberController.text.trim(),
+                    address: addressController.text.trim(),
+                  );
                   await UserRepository().userData(user, context);
                   // ignore: use_build_context_synchronously
                   Navigator.pushNamed(context, HomeScreen.routeName);

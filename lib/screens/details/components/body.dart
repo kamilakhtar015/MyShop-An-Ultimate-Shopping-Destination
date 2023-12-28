@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/components/default_button.dart';
-import 'package:myshop/components/rounded_icon_btn.dart';
+// import 'package:myshop/components/rounded_icon_btn.dart';
 import 'package:myshop/constants.dart';
 import 'package:myshop/models/product.dart';
+import 'package:myshop/screens/cart/cart_screen.dart';
 import 'package:myshop/screens/details/components/product_description.dart';
 import 'package:myshop/screens/details/components/product_images.dart';
 // import 'package:myshop/screens/details/components/top_rounded_container.dart';
@@ -39,25 +40,27 @@ class Body extends StatelessWidget {
                   screenWidth: screenWidth,
                   pressOnMore: () {},
                 ),
-                Row(
-                  children: [
-                    ...List.generate(
-                      product.colors.length,
-                      (index) => ColorDot(
-                        screenWidth: screenWidth,
-                        color: product.colors[index],
-                      ),
-                    ),
-                    const Spacer(),
-                    RoundedIconBtn(press: () {}, iconData: Icons.remove),
-                    SizedBox(width: screenWidth * 0.1),
-                    RoundedIconBtn(press: () {}, iconData: Icons.add),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     ...List.generate(
+                //       product.colors.length,
+                //       (index) => ColorDot(
+                //         screenWidth: screenWidth,
+                //         color: product.colors[index],
+                //       ),
+                //     ),
+                //     const Spacer(),
+                //     RoundedIconBtn(press: () {}, iconData: Icons.remove),
+                //     SizedBox(width: screenWidth * 0.1),
+                //     RoundedIconBtn(press: () {}, iconData: Icons.add),
+                //   ],
+                // ),
                 SizedBox(height: screenWidth * 0.06),
                 DefaultButton(
                   text: 'Add to Cart',
-                  press: () {},
+                  press: () {
+                    Navigator.pushNamed(context, CartScreen.routeName);
+                  },
                   width: 0,
                   height: 0,
                   // width: screenWidth * 0.18,

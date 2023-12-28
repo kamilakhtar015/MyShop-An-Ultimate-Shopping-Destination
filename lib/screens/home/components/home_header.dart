@@ -34,13 +34,13 @@ class HomeHeader extends StatelessWidget {
           ),
 
           // the  button on the notification icon
-          IconWithCounter(
-            screenHeight: screenHeight,
-            screenWidth: screenWidth,
-            svgSrc: "assets/icons/Bell.svg",
-            numOfItems: 3,
-            press: () {},
-          ),
+          // IconWithCounter(
+          //   screenHeight: screenHeight,
+          //   screenWidth: screenWidth,
+          //   svgSrc: "assets/icons/Bell.svg",
+          //   numOfItems: 3,
+          //   press: () {},
+          // ),
         ],
       ),
     );

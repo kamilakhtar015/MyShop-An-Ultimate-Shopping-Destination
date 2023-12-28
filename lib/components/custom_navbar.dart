@@ -35,27 +35,13 @@ class CustomNavBar extends StatelessWidget {
       ),
       child: SafeArea(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
               onPressed: () =>
                   Navigator.pushNamed(context, HomeScreen.routeName),
               icon: SvgPicture.asset("assets/icons/Shop Icon.svg",
                   color: MenuState.home == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/icons/Heart Icon.svg",
-                  color: MenuState.favourite == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg",
-                  color: MenuState.message == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor),
             ),

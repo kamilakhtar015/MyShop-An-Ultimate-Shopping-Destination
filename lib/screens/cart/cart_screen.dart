@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:myshop/components/default_button.dart';
-import 'package:myshop/constants.dart';
 import 'package:myshop/models/cart.dart';
 import 'package:myshop/screens/cart/components/body.dart';
 
@@ -22,7 +20,6 @@ class CartScreen extends StatelessWidget {
               style: TextStyle(color: Colors.black),
             ),
             Text(
-              // "4 Items",
               "${demoCarts.length} items",
               style: Theme.of(context).textTheme.bodySmall,
             ),
@@ -69,30 +66,6 @@ class CheckOurCard extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    height: screenWidth * 0.1,
-                    width: screenWidth * 0.1,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF5F6F9),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset("assets/icons/receipt.svg"),
-                  ),
-
-                  const Spacer(), // Move this line here
-                  const Text('Add voucher code'),
-                  const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 12,
-                    color: kTextColor,
-                  ),
-                ],
-              ),
-              SizedBox(height: screenWidth * 0.08),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

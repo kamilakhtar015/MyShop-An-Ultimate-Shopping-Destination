@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+// import 'package:flutter_svg/svg.dart';
 import 'package:myshop/constants.dart';
 import 'package:myshop/models/product.dart';
 
@@ -25,28 +25,28 @@ class ProductDescroption extends StatelessWidget {
           // style: Theme.of(context).textTheme.headlineSmall,
           style: TextStyle(fontSize: screenWidth * 0.06),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Container(
-            padding: EdgeInsets.all(screenWidth * 0.04),
-            width: screenWidth * 0.15,
-            decoration: BoxDecoration(
-              color: product.isFavourite
-                  ? const Color(0xFFFFE6E6)
-                  : const Color(0xFFF5F6F9),
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  bottomLeft: Radius.circular(20)),
-            ),
-            child: SvgPicture.asset(
-              "assets/icons/Heart Icon_2.svg",
-              // ignore: deprecated_member_use
-              color: product.isFavourite
-                  ? const Color(0xFFFF4848)
-                  : const Color(0xFFDBDEE4),
-            ),
-          ),
-        ),
+        // Align(
+        //   alignment: Alignment.centerRight,
+        //   child: Container(
+        //     padding: EdgeInsets.all(screenWidth * 0.04),
+        //     width: screenWidth * 0.15,
+        //     decoration: BoxDecoration(
+        //       color: product.isFavourite
+        //           ? const Color(0xFFFFE6E6)
+        //           : const Color(0xFFF5F6F9),
+        //       borderRadius: const BorderRadius.only(
+        //           topLeft: Radius.circular(20),
+        //           bottomLeft: Radius.circular(20)),
+        //     ),
+        //     child: SvgPicture.asset(
+        //       "assets/icons/Heart Icon_2.svg",
+        //       // ignore: deprecated_member_use
+        //       color: product.isFavourite
+        //           ? const Color(0xFFFF4848)
+        //           : const Color(0xFFDBDEE4),
+        //     ),
+        //   ),
+        // ),
         // Align ends here
         Padding(
           padding: EdgeInsets.only(

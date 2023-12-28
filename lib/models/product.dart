@@ -6,15 +6,12 @@ class Product {
   late final List<String> images;
   late final List<Color> colors;
   late final double rating, price;
-  late final bool isFavourite, isPopular;
 
   Product({
     required this.id,
     required this.images,
     required this.colors,
     this.rating = 0.0,
-    this.isFavourite = false,
-    this.isPopular = false,
     required this.title,
     required this.price,
     required this.description,
@@ -22,7 +19,6 @@ class Product {
 }
 
 // Our demo Products
-
 List<Product> demoProducts = [
   Product(
     id: 1,
@@ -42,8 +38,6 @@ List<Product> demoProducts = [
     price: 64.99,
     description: description,
     rating: 4.8,
-    isFavourite: true,
-    isPopular: true,
   ),
   Product(
     id: 2,
@@ -60,7 +54,6 @@ List<Product> demoProducts = [
     price: 50.5,
     description: description,
     rating: 4.1,
-    isPopular: true,
   ),
   Product(
     id: 3,
@@ -77,8 +70,6 @@ List<Product> demoProducts = [
     price: 36.55,
     description: description,
     rating: 4.1,
-    isFavourite: true,
-    isPopular: true,
   ),
   Product(
     id: 4,
@@ -95,7 +86,6 @@ List<Product> demoProducts = [
     price: 20.20,
     description: description,
     rating: 4.1,
-    isFavourite: true,
   )
 ];
 

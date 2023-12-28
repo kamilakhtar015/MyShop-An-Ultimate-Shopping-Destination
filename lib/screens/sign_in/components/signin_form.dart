@@ -4,8 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myshop/components/custom_sufix_icon.dart';
 import 'package:myshop/components/default_button.dart';
-import 'package:myshop/screens/forget_password/forget_password_screen.dart';
-import 'package:myshop/screens/home/home_screen.dart';
+// import 'package:myshop/screens/forget_password/forget_password_screen.dart';
+// import 'package:myshop/screens/home/home_screen.dart';
+import 'package:myshop/screens/login_success/login_success_screen.dart';
 // import 'package:myshop/screens/login_success/login_success_screen.dart';
 
 class SignForm extends StatefulWidget {
@@ -88,25 +89,25 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: screenHeight * 0.04,
           ),
-          Row(
-            children: [
-              Checkbox(
-                value: false,
-                onChanged: (value) {},
-              ),
-              const Text('Remember me'),
-              const Spacer(),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, ForgetPasswordScreen.routneName);
-                },
-                child: const Text(
-                  "Forget password",
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              )
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     Checkbox(
+          //       value: false,
+          //       onChanged: (value) {},
+          //     ),
+          //     const Text('Remember me'),
+          //     const Spacer(),
+          //     GestureDetector(
+          //       onTap: () {
+          //         Navigator.pushNamed(context, ForgetPasswordScreen.routneName);
+          //       },
+          //       child: const Text(
+          //         "Forget password",
+          //         style: TextStyle(decoration: TextDecoration.underline),
+          //       ),
+          //     )
+          //   ],
+          // ),
           SizedBox(
             height: screenHeight * 0.06,
           ),
@@ -138,7 +139,7 @@ class _SignFormState extends State<SignForm> {
                   );
 
                   // Successful sign-in, navigate to HomeScreen
-                  Navigator.pushNamed(context, HomeScreen.routeName);
+                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
                 } on FirebaseAuthException catch (error) {
                   // Handle authentication errors
                   showFirebaseErrorSnackbar(context, error.code);

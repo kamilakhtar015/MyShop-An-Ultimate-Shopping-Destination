@@ -64,18 +64,18 @@ class ProductCard extends StatelessWidget {
                       padding: EdgeInsets.all(screenWidth * 0.03),
                       width: screenWidth * 0.1,
                       height: screenWidth * 0.15,
-                      decoration: BoxDecoration(
-                        color: product.isFavourite
-                            ? kPrimaryColor.withOpacity(0.15)
-                            : kSecondaryColor.withOpacity(0.1),
+                      decoration: const BoxDecoration(
+                        // color: product.isFavourite
+                        //     ? kPrimaryColor.withOpacity(0.15)
+                        //     : kSecondaryColor.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: SvgPicture.asset(
                         "assets/icons/Heart Icon_2.svg",
                         // ignore: deprecated_member_use
-                        color: product.isFavourite
-                            ? const Color(0xFFFF4848)
-                            : const Color(0xFFDBDEE4),
+                        // color: product.isFavourite
+                        //     ? const Color(0xFFFF4848)
+                        //     : const Color(0xFFDBDEE4),
                       ),
                     ),
                   )

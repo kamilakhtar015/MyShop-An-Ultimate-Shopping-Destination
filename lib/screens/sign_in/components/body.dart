@@ -1,7 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:myshop/components/social_card.dart';
+// import 'package:myshop/components/social_card.dart';
 import 'package:myshop/constants.dart';
 import 'package:myshop/screens/sign_in/components/signin_form.dart';
 import 'package:myshop/screens/sign_up/sign_up_screen.dart';
@@ -39,30 +39,30 @@ class Body extends StatelessWidget {
                 ),
                 // Sign Up form
                 const SignForm(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Spacer(),
-                    SocialCard(
-                      screenHeight: screenHeight,
-                      icon: "assets/icons/google-icon.svg",
-                      press: () {},
-                    ),
-                    const Spacer(),
-                    SocialCard(
-                      screenHeight: screenHeight,
-                      icon: "assets/icons/facebook-2.svg",
-                      press: () {},
-                    ),
-                    const Spacer(),
-                    SocialCard(
-                      screenHeight: screenHeight,
-                      icon: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
-                    const Spacer()
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     const Spacer(),
+                //     SocialCard(
+                //       screenHeight: screenHeight,
+                //       icon: "assets/icons/google-icon.svg",
+                //       press: () {},
+                //     ),
+                //     const Spacer(),
+                //     SocialCard(
+                //       screenHeight: screenHeight,
+                //       icon: "assets/icons/facebook-2.svg",
+                //       press: () {},
+                //     ),
+                //     const Spacer(),
+                //     SocialCard(
+                //       screenHeight: screenHeight,
+                //       icon: "assets/icons/twitter.svg",
+                //       press: () {},
+                //     ),
+                //     const Spacer()
+                //   ],
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -72,6 +72,9 @@ class Body extends StatelessWidget {
                         fontSize: screenWidth *
                             0.04, // Adjust font size based on screen width
                       ),
+                    ),
+                    SizedBox(
+                      height: screenHeight * 0.08,
                     ),
                     GestureDetector(
                       onTap: () =>
