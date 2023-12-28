@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
 import 'package:myshop/constants.dart';
-import 'package:myshop/models/product.dart';
+import 'package:myshop/new_models/new_product.dart';
 
 class ProductDescroption extends StatelessWidget {
   const ProductDescroption({
     super.key,
-    required this.product,
+    required this.newproducts,
     required this.screenWidth,
     required this.pressOnMore,
   });
 
-  final Product product;
+  final NewProduct newproducts;
   final double screenWidth;
   final GestureTapCallback pressOnMore;
 
@@ -21,7 +20,7 @@ class ProductDescroption extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          product.title,
+          newproducts.title,
           // style: Theme.of(context).textTheme.headlineSmall,
           style: TextStyle(fontSize: screenWidth * 0.06),
         ),
@@ -53,7 +52,7 @@ class ProductDescroption extends StatelessWidget {
             // left: screenWidth * 0.04,
             right: screenWidth * 0.04,
           ),
-          child: Text(product.description, maxLines: 3),
+          child: Text(newproducts.description, maxLines: 3),
         ),
 
         GestureDetector(

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/constants.dart';
-import 'package:myshop/models/product.dart';
+import 'package:myshop/new_models/new_product.dart';
 
 class ProductImages extends StatefulWidget {
   const ProductImages({
     super.key,
     required this.screenWidth,
-    required this.product,
+    required this.newproducts,
+    // required NewProduct newproduct,
   });
 
   final double screenWidth;
-  final Product product;
+  final NewProduct newproducts;
 
   @override
   State<ProductImages> createState() => _ProductImagesState();
@@ -27,14 +28,16 @@ class _ProductImagesState extends State<ProductImages> {
           height: widget.screenWidth * 0.5,
           child: AspectRatio(
             aspectRatio: 1,
-            child: Image.asset(widget.product.images[selectedImage]),
+            child: Image.network(
+              widget.newproducts.images[selectedImage],
+            ),
           ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...List.generate(
-                widget.product.images.length, (index) => smallPreview(index))
+            ...List.generate(widget.newproducts.images.length,
+                (index) => smallPreview(index))
           ],
         )
       ],
@@ -60,7 +63,7 @@ class _ProductImagesState extends State<ProductImages> {
             color: selectedImage == index ? kPrimaryColor : Colors.transparent,
           ),
         ),
-        child: Image.asset(widget.product.images[index]),
+        child: Image.network(widget.newproducts.images[index]),
       ),
     );
   }

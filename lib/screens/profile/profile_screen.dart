@@ -115,8 +115,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               // Add more Text widgets to display other user information
             ] else ...[
               // Display loading indicator or user not found message
-              CircularProgressIndicator(),
-              Text('User data not found.'),
+              const CircularProgressIndicator(),
+              const Text('User data not found.'),
             ],
           ],
         ),

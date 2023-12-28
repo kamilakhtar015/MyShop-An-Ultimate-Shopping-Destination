@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:myshop/constants.dart';
-import 'package:myshop/models/product.dart';
+// import 'package:myshop/models/product.dart';
+import 'package:myshop/new_models/new_product.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -9,13 +10,13 @@ class ProductCard extends StatelessWidget {
     required this.screenWidth,
     this.width = 0.04,
     this.aspectRatio = 1.02,
-    required this.product,
+    required this.newproduct,
     required this.press,
   });
 
   final double screenWidth;
   final double width, aspectRatio;
-  final Product product;
+  final NewProduct newproduct;
   final GestureTapCallback press;
 
   @override
@@ -37,12 +38,12 @@ class ProductCard extends StatelessWidget {
                     color: kSecondaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Image.asset(product.images[0]),
+                  child: Image.network(newproduct.images[0]),
                 ),
               ),
               const SizedBox(height: 5),
               Text(
-                product.title,
+                newproduct.title,
                 style: const TextStyle(color: Colors.black),
                 maxLines: 2,
               ),
@@ -50,7 +51,7 @@ class ProductCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "\$${product.price}",
+                    "\$${newproduct.price}",
                     style: TextStyle(
                       fontSize: screenWidth * 0.05,
                       fontWeight: FontWeight.w600,

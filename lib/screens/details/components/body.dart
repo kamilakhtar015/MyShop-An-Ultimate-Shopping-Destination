@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/components/default_button.dart';
-// import 'package:myshop/components/rounded_icon_btn.dart';
 import 'package:myshop/constants.dart';
-import 'package:myshop/models/product.dart';
+import 'package:myshop/new_models/new_product.dart';
 import 'package:myshop/screens/cart/cart_screen.dart';
 import 'package:myshop/screens/details/components/product_description.dart';
 import 'package:myshop/screens/details/components/product_images.dart';
 // import 'package:myshop/screens/details/components/top_rounded_container.dart';
 
 class Body extends StatelessWidget {
-  const Body({super.key, required this.product});
+  const Body({super.key, required this.newproducts});
 
-  final Product product;
+  final NewProduct newproducts;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,12 @@ class Body extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
-          ProductImages(screenWidth: screenWidth, product: product),
+          // ProductImages(screenWidth: screenWidth, NewProduct: newproducts),
+          ProductImages(
+            screenWidth: screenWidth,
+            newproducts: newproducts,
+          ),
+          // NewProduct: newproducts),
           // const SizedBox(height: 15),
           Container(
             margin: EdgeInsets.only(top: screenWidth * 0.03),
@@ -35,11 +39,16 @@ class Body extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // ProductDescroption(
+                //   product: product,
+                //   screenWidth: screenWidth,
+                //   pressOnMore: () {},
+                // ),
                 ProductDescroption(
-                  product: product,
-                  screenWidth: screenWidth,
-                  pressOnMore: () {},
-                ),
+                    newproducts: newproducts,
+                    screenWidth: screenWidth,
+                    pressOnMore: () {}),
+
                 // Row(
                 //   children: [
                 //     ...List.generate(
