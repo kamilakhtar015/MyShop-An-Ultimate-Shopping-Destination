@@ -29,7 +29,7 @@ class SectionTitle extends StatelessWidget {
           ),
           GestureDetector(
             onTap: press,
-            child: const Text("See More"),
+            child: const Text("See All Products"),
           )
         ],
       ),

@@ -4,7 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myshop/components/custom_sufix_icon.dart';
 import 'package:myshop/components/default_button.dart';
-import 'package:myshop/screens/complete_profile/complete_profile.dart';
+import 'package:myshop/repository/signup_controller.dart';
+import 'package:myshop/screens/home/home_screen.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key});
@@ -18,6 +19,10 @@ class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -29,41 +34,101 @@ class _SignUpFormState extends State<SignUpForm> {
       key: _formKey,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-        child: Column(
-          children: [
-            email(),
-            SizedBox(height: screenHeight * 0.04),
-            password(),
-            SizedBox(height: screenHeight * 0.04),
-            confirmPassword(),
-            SizedBox(height: screenHeight * 0.04),
-            DefaultButton(
-              text: "Continue",
-              width: 300,
-              height: 48,
-              press: () async {
-                if (_formKey.currentState!.validate()) {
-                  // If form is valid, proceed with Firebase signup
-                  try {
-                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                    );
-
-                    // Successful signup, navigate to CompleteProfileScreen
-                    Navigator.pushNamed(
-                        context, CompleteProfileScreen.routeName);
-                    // HomeScreen.routeName);
-                  } on FirebaseAuthException catch (error) {
-                    // Clear password field on error
-                    passwordController.clear();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(error.toString())));
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              email(),
+              SizedBox(height: screenHeight * 0.04),
+              password(),
+              SizedBox(height: screenHeight * 0.04),
+              confirmPassword(
+                labelText: "Confirm Password",
+                hintText: "Re-enter your password",
+                suffixIcon: 'assets/icons/Lock.svg',
+              ),
+              SizedBox(height: screenHeight * 0.04),
+              buildTextFormField(
+                controller: firstNameController,
+                labelText: "First Name",
+                hintText: "Enter your first name",
+                suffixIcon: 'assets/icons/User.svg',
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Please enter your first name";
                   }
-                }
-              },
-            ),
-          ],
+                  return null;
+                },
+              ),
+              SizedBox(height: screenHeight * 0.04),
+              buildTextFormField(
+                controller: lastNameController,
+                labelText: "Last Name",
+                hintText: "Enter your last name",
+                suffixIcon: 'assets/icons/User.svg',
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Please enter your last name";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: screenHeight * 0.04),
+              buildTextFormField(
+                controller: phoneNumberController,
+                labelText: "Phone Number",
+                hintText: "Enter your phone number",
+                suffixIcon: 'assets/icons/Phone.svg',
+                keyboardType: TextInputType.number,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Please enter your phone number";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: screenHeight * 0.04),
+              buildTextFormField(
+                controller: addressController,
+                labelText: "Address",
+                hintText: "Enter your address",
+                suffixIcon: 'assets/icons/Location point.svg',
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Please enter your address";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: screenHeight * 0.04),
+              DefaultButton(
+                text: "Continue",
+                width: 300,
+                height: 48,
+                press: () async {
+                  String email = emailController.text.trim();
+                  String password = passwordController.text.trim();
+                  String firstName = firstNameController.text.trim();
+                  String lastName = lastNameController.text.trim();
+                  String phoneNumber = phoneNumberController.text.trim();
+                  String address = addressController.text.trim();
+
+                  if (_formKey.currentState!.validate()) {
+                    SignUpController signUpController = SignUpController();
+
+                    try {
+                      await signUpController.signUpMethod(firstName, lastName,
+                          email, phoneNumber, address, password);
+
+                      Navigator.pushNamed(context, HomeScreen.routeName);
+                    } on FirebaseAuthException catch (error) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(error.toString())));
+                    }
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -136,7 +201,11 @@ class _SignUpFormState extends State<SignUpForm> {
   }
 
   // Confirm Password
-  TextFormField confirmPassword() {
+  TextFormField confirmPassword({
+    required String labelText,
+    required String hintText,
+    required String suffixIcon,
+  }) {
     return TextFormField(
       obscureText: true,
       controller: confirmPasswordController,
@@ -149,11 +218,38 @@ class _SignUpFormState extends State<SignUpForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
-        labelText: "Confirm Password",
-        hintText: "Re-enter your password",
+      decoration: InputDecoration(
+        labelText: labelText,
+        hintText: hintText,
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSufixIcon(svgIcon: 'assets/icons/Lock.svg'),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        suffixIcon: CustomSufixIcon(svgIcon: suffixIcon),
+      ),
+    );
+  }
+
+  TextFormField buildTextFormField({
+    required TextEditingController controller,
+    required String labelText,
+    required String hintText,
+    required String suffixIcon,
+    TextInputType keyboardType = TextInputType.text,
+    String? Function(String?)? validator,
+  }) {
+    return TextFormField(
+      keyboardType: keyboardType,
+      controller: controller,
+      validator: validator,
+      decoration: InputDecoration(
+        labelText: labelText,
+        hintText: hintText,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        suffixIcon: CustomSufixIcon(svgIcon: suffixIcon),
       ),
     );
   }

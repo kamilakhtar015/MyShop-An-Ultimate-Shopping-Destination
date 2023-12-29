@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NewProduct {
-  final String id;
+  final String productid;
   final List<String> images;
   final String title;
   final String description;
@@ -9,7 +9,7 @@ class NewProduct {
   final double price;
 
   NewProduct({
-    required this.id,
+    required this.productid,
     required this.images,
     required this.title,
     required this.description,
@@ -20,7 +20,7 @@ class NewProduct {
 // Convert the Product object to a map for Firebase
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'productid': productid,
       'images': images,
       'title': title,
       'description': description,
@@ -33,7 +33,7 @@ class NewProduct {
   static NewProduct fromDocumentSnapshot(DocumentSnapshot snapshot) {
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     return NewProduct(
-      id: data['id'],
+      productid: data['productid'],
       images: List<String>.from(data['images']),
       title: data['title'],
       description: data['description'],
@@ -44,7 +44,7 @@ class NewProduct {
 
   factory NewProduct.fromJson(Map<String, dynamic> json) {
     return NewProduct(
-      id: json['id'],
+      productid: json['productid'],
       images: List<String>.from(json['images']),
       title: json['title'],
       description: json['description'],

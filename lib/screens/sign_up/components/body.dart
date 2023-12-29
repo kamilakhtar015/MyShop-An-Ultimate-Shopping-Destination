@@ -27,30 +27,6 @@ class Body extends StatelessWidget {
           ),
           SizedBox(height: screenHeight * 0.07),
           const SignUpForm(),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     const Spacer(flex: 2),
-          //     SocialCard(
-          //       screenHeight: screenHeight,
-          //       icon: "assets/icons/google-icon.svg",
-          //       press: () {},
-          //     ),
-          //     const Spacer(),
-          //     SocialCard(
-          //       screenHeight: screenHeight,
-          //       icon: "assets/icons/facebook-2.svg",
-          //       press: () {},
-          //     ),
-          //     const Spacer(),
-          //     SocialCard(
-          //       screenHeight: screenHeight,
-          //       icon: "assets/icons/twitter.svg",
-          //       press: () {},
-          //     ),
-          //     const Spacer(flex: 2),
-          //   ],
-          // ),
           SizedBox(height: screenHeight * 0.02),
           const Text(
             'By continuing you confirm that you agree \nwith our Terms and Conditions',

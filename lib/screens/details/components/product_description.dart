@@ -49,7 +49,6 @@ class ProductDescroption extends StatelessWidget {
         // Align ends here
         Padding(
           padding: EdgeInsets.only(
-            // left: screenWidth * 0.04,
             right: screenWidth * 0.04,
           ),
           child: Text(newproducts.description, maxLines: 3),
@@ -57,22 +56,29 @@ class ProductDescroption extends StatelessWidget {
 
         GestureDetector(
           onTap: pressOnMore,
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'See More Details',
+                const Text(
+                  'See Details',
                   style: TextStyle(
                       color: kPrimaryColor, fontWeight: FontWeight.w600),
                 ),
-                SizedBox(width: 5),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12,
-                  color: kPrimaryColor,
-                )
+                // const SizedBox(width: 5),
+                // const Icon(
+                //   Icons.arrow_forward_ios,
+                //   size: 12,
+                //   color: kPrimaryColor,
+                // ),
+                Text(
+                  '\$${newproducts.price.toString()}',
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                    color: kPrimaryColor,
+                  ),
+                ),
               ],
             ),
           ),

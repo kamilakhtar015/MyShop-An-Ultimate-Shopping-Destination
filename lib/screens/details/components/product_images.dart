@@ -7,7 +7,6 @@ class ProductImages extends StatefulWidget {
     super.key,
     required this.screenWidth,
     required this.newproducts,
-    // required NewProduct newproduct,
   });
 
   final double screenWidth;

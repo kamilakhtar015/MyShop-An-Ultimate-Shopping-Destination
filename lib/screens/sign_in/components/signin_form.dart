@@ -89,25 +89,6 @@ class _SignFormState extends State<SignForm> {
           SizedBox(
             height: screenHeight * 0.04,
           ),
-          // Row(
-          //   children: [
-          //     Checkbox(
-          //       value: false,
-          //       onChanged: (value) {},
-          //     ),
-          //     const Text('Remember me'),
-          //     const Spacer(),
-          //     GestureDetector(
-          //       onTap: () {
-          //         Navigator.pushNamed(context, ForgetPasswordScreen.routneName);
-          //       },
-          //       child: const Text(
-          //         "Forget password",
-          //         style: TextStyle(decoration: TextDecoration.underline),
-          //       ),
-          //     )
-          //   ],
-          // ),
           SizedBox(
             height: screenHeight * 0.06,
           ),
