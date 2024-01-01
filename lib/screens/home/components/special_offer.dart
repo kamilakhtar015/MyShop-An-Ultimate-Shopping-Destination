@@ -1,11 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:myshop/screens/home/components/section_title.dart';
 
 class SpecialOffer extends StatelessWidget {
   const SpecialOffer({
-    super.key,
+    Key? key,
     required this.screenWidth,
-  });
+  }) : super(key: key);
 
   final double screenWidth;
 
@@ -21,44 +22,63 @@ class SpecialOffer extends StatelessWidget {
         SizedBox(height: screenWidth * 0.02),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              SpecialOfferCard(
-                screenWidth: screenWidth,
-                image: 'assets/images/Image Banner 2.png',
-                category: "Smartphone",
-                numOfBrands: 18,
-                press: () {},
-              ),
-              SpecialOfferCard(
-                screenWidth: screenWidth,
-                image: 'assets/images/Image Banner 3.png',
-                category: "Fashion",
-                numOfBrands: 24,
-                press: () {},
-              ),
-              SizedBox(width: screenWidth * 0.02),
-            ],
+          child: FutureBuilder(
+            future: _getCategories(),
+            builder:
+                (context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text("Error: ${snapshot.error}");
+              } else {
+                List<Widget> categoryCards = [];
+                for (var categoryData in snapshot.data!) {
+                  categoryCards.add(SpecialOfferCard(
+                    screenWidth: screenWidth,
+                    image: categoryData['imgUrl'],
+                    companyName: categoryData['companyName'],
+                    numOfBrands: categoryData['numOfBrands'],
+                    press: () {},
+                  ));
+                }
+
+                return Row(
+                  children: categoryCards,
+                );
+              }
+            },
           ),
         ),
       ],
     );
   }
+
+  Future<List<Map<String, dynamic>>> _getCategories() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await FirebaseFirestore.instance.collection('categories').get();
+
+    return querySnapshot.docs.map((DocumentSnapshot<Map<String, dynamic>> doc) {
+      return {
+        'imgUrl': doc['imgUrl'],
+        'companyName': doc['companyName'],
+        'numOfBrands': doc['numOfBrands']
+      };
+    }).toList();
+  }
 }
 
 class SpecialOfferCard extends StatelessWidget {
   const SpecialOfferCard({
-    super.key,
+    Key? key,
     required this.screenWidth,
-    required this.category,
+    required this.companyName,
     required this.image,
     required this.numOfBrands,
     required this.press,
-  });
+  }) : super(key: key);
 
   final double screenWidth;
-
-  final String category, image;
+  final String companyName, image;
   final int numOfBrands;
   final GestureTapCallback press;
 
@@ -73,8 +93,10 @@ class SpecialOfferCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           child: Stack(
             children: [
-              Image.asset(
-                image,
+              Image.network(
+                image, // Load image from network
+                width: double.infinity,
+                height: double.infinity,
                 fit: BoxFit.cover,
               ),
               Container(
@@ -98,7 +120,7 @@ class SpecialOfferCard extends StatelessWidget {
                   style: const TextStyle(color: Colors.white),
                   children: [
                     TextSpan(
-                      text: "$category\n",
+                      text: "$companyName\n",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: screenWidth * 0.05,

@@ -1,11 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:myshop/constants.dart';
 import 'package:myshop/enums.dart';
+import 'package:myshop/screens/favourite/favourite.dart';
 import 'package:myshop/screens/home/home_screen.dart';
 import 'package:myshop/screens/profile/profile_screen.dart';
+// import 'package:myshop/screens/profile/profile_screen.dart';
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({
@@ -38,20 +39,33 @@ class CustomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-              onPressed: () =>
-                  Navigator.pushNamed(context, HomeScreen.routeName),
-              icon: SvgPicture.asset("assets/icons/Shop Icon.svg",
+                onPressed: () =>
+                    Navigator.pushNamed(context, HomeScreen.routeName),
+                // icon: SvgPicture.asset("assets/icons/Shop Icon.svg",
+                icon: Icon(
+                  Icons.home,
                   color: MenuState.home == selectedMenu
                       ? kPrimaryColor
-                      : inActiveIconColor),
-            ),
+                      : inActiveIconColor,
+                )),
             IconButton(
               onPressed: () =>
-                  Navigator.pushNamed(context, ProfileScreen.routeName),
-              icon: SvgPicture.asset("assets/icons/User Icon.svg",
-                  color: MenuState.profile == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor),
+                  Navigator.pushNamed(context, FavouriteScreen.routerName),
+              icon: Icon(
+                Icons.favorite,
+                color: MenuState.favourites == selectedMenu
+                    ? kPrimaryColor
+                    : inActiveIconColor,
+              ),
+            ),
+            IconButton(
+              onPressed: () => Navigator.pushNamed(context, Profile.routeName),
+              icon: Icon(
+                Icons.person,
+                color: MenuState.profile == selectedMenu
+                    ? kPrimaryColor
+                    : inActiveIconColor,
+              ),
             )
           ],
         ),

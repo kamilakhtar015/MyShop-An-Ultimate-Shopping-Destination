@@ -7,6 +7,7 @@ class NewProduct {
   final String description;
   final double rating;
   final double price;
+  bool isFavourite;
 
   NewProduct({
     required this.productid,
@@ -15,6 +16,7 @@ class NewProduct {
     required this.description,
     required this.rating,
     required this.price,
+    required this.isFavourite,
   });
 
 // Convert the Product object to a map for Firebase
@@ -26,6 +28,7 @@ class NewProduct {
       'description': description,
       'rating': rating,
       'price': price,
+      'isFavourite': isFavourite
     };
   }
 
@@ -39,6 +42,7 @@ class NewProduct {
       description: data['description'],
       rating: data['rating'],
       price: data['price'],
+      isFavourite: data['isFavourite'],
     );
   }
 
@@ -50,7 +54,9 @@ class NewProduct {
       description: json['description'],
       rating: json['rating'],
       price: json['price'],
+      isFavourite: json['isFavourite'],
     );
   }
-  
+
+  toJson() {}
 }

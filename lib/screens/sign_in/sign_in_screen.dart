@@ -22,7 +22,6 @@ class SignInScreen extends StatelessWidget {
 
       body: const Body(),
 
-      // Other content of the SignInScreen...
     );
   }
 }

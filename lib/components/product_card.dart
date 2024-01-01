@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:myshop/constants.dart';
@@ -60,23 +61,31 @@ class ProductCard extends StatelessWidget {
                   ),
                   InkWell(
                     borderRadius: BorderRadius.circular(30),
-                    onTap: () {},
+                    onTap: () {
+                      bool newFavouriteStatus = !newproduct.isFavourite;
+                      FirebaseFirestore.instance
+                          .collection('Products')
+                          .doc(newproduct.productid)
+                          .update({'isFavourite': newFavouriteStatus});
+
+                      newproduct.isFavourite = newFavouriteStatus;
+                    },
                     child: Container(
                       padding: EdgeInsets.all(screenWidth * 0.03),
                       width: screenWidth * 0.1,
                       height: screenWidth * 0.15,
-                      decoration: const BoxDecoration(
-                        // color: product.isFavourite
-                        //     ? kPrimaryColor.withOpacity(0.15)
-                        //     : kSecondaryColor.withOpacity(0.1),
+                      decoration: BoxDecoration(
+                        color: newproduct.isFavourite
+                            ? kPrimaryColor.withOpacity(0.15)
+                            : kSecondaryColor.withOpacity(0.1),
                         shape: BoxShape.circle,
                       ),
                       child: SvgPicture.asset(
                         "assets/icons/Heart Icon_2.svg",
                         // ignore: deprecated_member_use
-                        // color: product.isFavourite
-                        //     ? const Color(0xFFFF4848)
-                        //     : const Color(0xFFDBDEE4),
+                        color: newproduct.isFavourite
+                            ? const Color(0xFFFF4848)
+                            : const Color(0xFFDBDEE4),
                       ),
                     ),
                   )

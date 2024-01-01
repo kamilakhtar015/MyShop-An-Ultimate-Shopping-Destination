@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
-      // home: SignUpForm(),
+      // home: const Profile(),
     );
   }
 }

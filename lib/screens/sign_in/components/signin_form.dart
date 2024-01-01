@@ -94,8 +94,8 @@ class _SignFormState extends State<SignForm> {
           ),
           DefaultButton(
             text: "Continue",
-            width: 300,
-            height: 48,
+            width: 1,
+            height: 0.12,
             press: () async {
               String email = _emailController.text;
               String password = _passwordController.text;
@@ -179,60 +179,3 @@ class _SignFormState extends State<SignForm> {
     );
   }
 }
-
-
-    // Form(
-    //   key: _formKey,
-    //   child: Column(children: [
-    //     email(),
-    //     if (emailError.isNotEmpty)
-    //       Text(
-    //         emailError,
-    //         style: const TextStyle(color: Colors.red),
-    //       ),
-    //     SizedBox(
-    //       height: screenHeight * 0.04,
-    //     ),
-    //     password(),
-    //     if (passwordError.isNotEmpty)
-    //       Text(
-    //         passwordError,
-    //         style: const TextStyle(color: Colors.red),
-    //       ),
-    //     SizedBox(
-    //       height: screenHeight * 0.04,
-    //     ),
-    //     Row(
-    //       children: [
-    //         Checkbox(
-    //           value: false,
-    //           onChanged: (value) {},
-    //         ),
-    //         const Text('Remeber me'),
-    //         const Spacer(),
-    //         GestureDetector(
-    //           onTap: () {
-    //             Navigator.pushNamed(context, ForgetPasswordScreen.routneName);
-    //           },
-    //           child: const Text("Forget password",
-    //               style: TextStyle(decoration: TextDecoration.underline)),
-    //         )
-    //       ],
-    //     ),
-    //     SizedBox(
-    //       height: screenHeight * 0.06,
-    //     ),
-    //     DefaultButton(
-    //       text: "Continue",
-    //       width: 300,
-    //       height: 48,
-    //       press: () {
-    //         // Validate form and show error messages
-    //         if (_formKey.currentState!.validate()) {
-    //           // if all are valid then go to success screen
-    //           Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-    //         }
-    //       },
-    //     )
-    //   ]),
-    // );

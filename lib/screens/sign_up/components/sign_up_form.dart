@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myshop/components/custom_sufix_icon.dart';
 import 'package:myshop/components/default_button.dart';
-import 'package:myshop/repository/signup_controller.dart';
+import 'package:myshop/controllers/signup_controller.dart';
 import 'package:myshop/screens/home/home_screen.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -39,7 +39,11 @@ class _SignUpFormState extends State<SignUpForm> {
             children: [
               email(),
               SizedBox(height: screenHeight * 0.04),
-              password(),
+              password(
+                labelText: "Password",
+                hintText: "Enter your password",
+                suffixIcon: 'assets/icons/Lock.svg',
+              ),
               SizedBox(height: screenHeight * 0.04),
               confirmPassword(
                 labelText: "Confirm Password",
@@ -102,8 +106,8 @@ class _SignUpFormState extends State<SignUpForm> {
               SizedBox(height: screenHeight * 0.04),
               DefaultButton(
                 text: "Continue",
-                width: 300,
-                height: 48,
+                width: 1,
+                height: 0.12,
                 press: () async {
                   String email = emailController.text.trim();
                   String password = passwordController.text.trim();
@@ -145,17 +149,24 @@ class _SignUpFormState extends State<SignUpForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: "Email",
         hintText: "Enter your email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSufixIcon(svgIcon: 'assets/icons/Mail.svg'),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        suffixIcon: const CustomSufixIcon(svgIcon: 'assets/icons/Mail.svg'),
       ),
     );
   }
 
   // Password Method
-  TextFormField password() {
+  TextFormField password({
+    required String labelText,
+    required String hintText,
+    required String suffixIcon,
+  }) {
     return TextFormField(
       obscureText: true,
       controller: passwordController,
@@ -191,11 +202,14 @@ class _SignUpFormState extends State<SignUpForm> {
 
         return null;
       },
-      decoration: const InputDecoration(
-        labelText: "Password",
-        hintText: "Enter your password",
+      decoration: InputDecoration(
+        labelText: labelText,
+        hintText: hintText,
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSufixIcon(svgIcon: 'assets/icons/Lock.svg'),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        suffixIcon: CustomSufixIcon(svgIcon: suffixIcon),
       ),
     );
   }

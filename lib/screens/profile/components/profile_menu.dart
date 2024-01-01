@@ -33,10 +33,14 @@ class ProfileMenu extends StatelessWidget {
               icon,
               // ignore: deprecated_member_use
               color: kPrimaryColor,
-              width: 30,
+              width: 20,
             ),
             const SizedBox(width: 20),
-            Expanded(child: Text(text)),
+            Expanded(
+                child: Text(
+              text,
+              style: const TextStyle(fontSize: 20),
+            )),
             const Icon(Icons.arrow_forward_ios),
           ],
         ),

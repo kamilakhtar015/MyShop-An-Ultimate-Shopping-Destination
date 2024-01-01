@@ -7,7 +7,13 @@ class Cart {
   List<CartModel> get cartItems => _cartItems;
 
   void addToCart(CartModel product) {
-    _cartItems.add(product);
+    // Check if the product already exists in the cart
+    bool productExists =
+        _cartItems.any((item) => item.productid == product.productid);
+
+    if (!productExists) {
+      _cartItems.add(product);
+    }
   }
 
   void removeFromCart(CartModel product) {

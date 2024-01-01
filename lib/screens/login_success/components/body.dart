@@ -33,8 +33,8 @@ class Body extends StatelessWidget {
               press: () {
                 Navigator.pushNamed(context, HomeScreen.routeName);
               },
-              width: 300,
-              height: 48,
+              width: 1,
+              height: 0.12,
             ),
           ),
         ],

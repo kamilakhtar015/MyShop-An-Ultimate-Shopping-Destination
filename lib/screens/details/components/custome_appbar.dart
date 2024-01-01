@@ -27,7 +27,7 @@ class CustomAppBar extends PreferredSize {
           children: [
             RoundedIconBtn(
               press: () => Navigator.pop(context),
-              iconData: Icons.arrow_back_ios,
+              iconData: Icons.arrow_back,
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
@@ -52,4 +52,3 @@ class CustomAppBar extends PreferredSize {
     );
   }
 }
-

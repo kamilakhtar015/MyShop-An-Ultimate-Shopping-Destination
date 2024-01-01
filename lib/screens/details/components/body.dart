@@ -59,8 +59,8 @@ class _BodyState extends State<Body> {
 
                     Navigator.pushNamed(context, CartScreen.routeName);
                   },
-                  width: 0,
-                  height: 0,
+                  width: 0.7,
+                  height: 0.12,
                 )
               ],
             ),
